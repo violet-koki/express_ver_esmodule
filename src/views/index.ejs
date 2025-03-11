@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .user-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .user-item {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>
+        <%= title %>
+    </h1>
+
+    <div class="card">
+        <h2>Welcome, <%= user.name %>!</h2>
+        <p>This is a simple Express application built with TypeScript and EJS.</p>
+
+        <h3>Featured Users:</h3>
+        <ul class="user-list">
+            <% users.forEach(function(user) { %>
+                <li class="user-item">
+                    <strong>
+                        <%= user.name %>
+                    </strong> - <%= user.email %>
+                </li>
+                <% }); %>
+        </ul>
+
+        <p>Current time: <%= new Date().toLocaleString() %>
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>API Reference</h2>
+        <p>Available endpoints:</p>
+        <ul>
+            <li><a href="/api/users">/api/users</a> - Get all users</li>
+            <li><a href="/api/users/1">/api/users/1</a> - Get user by ID</li>
+        </ul>
+    </div>
+</body>
+
+</html>
