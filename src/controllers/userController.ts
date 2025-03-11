@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { getAllUsers, getUserById } from '../services/userService';
+import { getAllUsers, getUserById } from '../services/userService.js';
 
 export const getUsers = (req: Request, res: Response): void => {
   const users = getAllUsers();

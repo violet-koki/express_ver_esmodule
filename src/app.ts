@@ -1,16 +1,23 @@
 import express, { Express } from 'express';
 import path from 'path';
-import { router as indexRouter } from './routes/index';
-import { router as apiRouter } from './routes/api';
-import { errorHandler } from './middleware/errorHandler';
-import { config } from './config/env';
+import { router as indexRouter } from './routes/index.js';
+import { router as apiRouter } from './routes/api.js';
+import { errorHandler } from './middleware/errorHandler.js';
+import { config } from './config/env.js';
 
 // Express アプリケーションの初期化
 const app: Express = express();
 const port = config.port;
+console.log('======');
+
+// ESModule対応のため、__dirnameの代替を作成
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // テンプレートエンジンの設定
-app.set('views', path.join(__dirname, 'views'));
+console.error(path.join(__dirname, '../src/views'));
+app.set('views', path.join(__dirname, '../src/views'));
 app.set('view engine', 'ejs');
 
 // ミドルウェア
